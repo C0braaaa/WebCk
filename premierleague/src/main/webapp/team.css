@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: rgb(128, 0, 128);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 2; /* Đảm bảo header nằm trên carousel */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    margin: 0;
+    padding: 15px 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    background-color: #fff;
+    padding-top: 0; /* Loại bỏ khoảng cách giữa header và phần chính */
+    
+}
+
+
+.player-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.player-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 22%; /* Chiếm 1/4 chiều rộng của container */
+    text-align: center;
+}
+
+/* Đảm bảo rằng hình ảnh có kích thước phù hợp */
+.player-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #d60000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

@@ -1,0 +1,188 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: rgb(128, 0, 128);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 2; /* Đảm bảo header nằm trên carousel */
+}
+
+.logo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 110%; /* Đặt logo ở vị trí giữa theo chiều dọc */
+    left: 10px; /* Đặt logo gần phía trái màn hình */
+    margin-top: -82px; /* Đảm bảo logo căn giữa theo chiều dọc */
+    z-index: 3;
+}
+
+header .lo-reg p {
+	color: white;
+    margin: 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+header .lo-reg p:hover {
+	text-decoration: underline;
+}
+/*
+nav {
+    height: 70px; 
+    background-color: black;
+}
+*/
+
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    margin: 0;
+    padding: 15px 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    background-color: #fff;
+    padding-top: 0; /* Loại bỏ khoảng cách giữa header và phần chính */
+}
+
+/* Tạo khoảng cách sát với nav */
+.carousel {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;     /* Căn giữa ảnh */
+    overflow: hidden;   /* Ẩn phần ảnh bị tràn ra ngoài */
+}
+
+/* Container của carousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 100%;  /* Đảm bảo carousel chiếm toàn bộ chiều rộng màn hình */
+    height: auto;    /* Để carousel tự động căn chỉnh chiều cao theo nội dung */
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: -1px;
+    margin-bottom: 0; 
+}
+
+/* Carousel images container */
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%; /* Đảm bảo container ảnh chiếm toàn bộ chiều rộng */
+    height: auto; /* Cho phép container tự động căn chỉnh theo chiều cao của ảnh */
+    animation: slide 15s infinite; /* Áp dụng animation */
+    margin-bottom: 0;
+}
+
+/* Mỗi item trong carousel */
+.carousel-item {
+    width: 100%; /* Chiếm toàn bộ chiều rộng của container */
+    height: auto; /* Đảm bảo ảnh tự động điều chỉnh theo chiều cao gốc */
+    max-height: 600px; /* Giới hạn chiều cao tối đa cho ảnh (bạn có thể thay đổi) */
+    object-fit: contain; /* Hiển thị toàn bộ ảnh mà không bị cắt */
+    flex-shrink: 0; /* Ngăn không cho ảnh bị thu nhỏ */
+}
+
+@keyframes slide {
+    0%, 20% { transform: translateX(0); }            /* Ảnh đầu tiên */
+    25%, 45% { transform: translateX(-100%); }       /* Ảnh thứ hai */
+    50%, 70% { transform: translateX(-200%); }       /* Ảnh thứ ba */
+    75%, 100% { transform: translateX(0); }          /* Quay lại ảnh đầu tiên */
+}
+
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;  /* Tăng padding để đảm bảo footer có đủ không gian */
+    position: relative; /* Đảm bảo footer nằm dưới cùng */
+    z-index: 0; /* Đảm bảo footer không bị đè lên */
+    width: 100%;
+}
+footer .copyr{
+	text-align: left;
+}
+footer .contact-info {
+    max-width: 100%; /* Đảm bảo không vượt quá chiều ngang của màn hình */
+    overflow-wrap: break-word; /* Đảm bảo nội dung dài sẽ xuống dòng */
+    word-wrap: break-word;
+    text-align: right; /* Căn phải */
+}
+
+footer .contact-info p {
+    margin: 0;
+}
+/* Dropdown button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: rgb(128, 0, 128);
+    color: white;
+    padding: 2px 20px;
+    font-size: 16px;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+}
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-radius: 4px;
+}
+
+/* Show the dropdown content when the user hovers over the button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
