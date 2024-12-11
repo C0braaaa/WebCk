@@ -1,48 +1,51 @@
 package com.java;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 @WebServlet("/Loginservlet")
 public class Loginservlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        try (Connection connection = DatabaseConnection.initializeDatabase()) {
-            String query = "SELECT * FROM user WHERE email = ? AND password = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery();
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
-            if (resultSet.next()) {
-                // Đăng nhập thành công
-                String username = resultSet.getString("username");
-                HttpSession session = request.getSession();
-                session.setAttribute("username", username); // Lưu username vào session
-                response.sendRedirect("home.jsp");
+        try {
+            // Kết nối CSDL
+            Connection conn = DatabaseConnection.initializeDatabase();
+
+            // Kiểm tra thông tin người dùng
+            String sql = "SELECT username FROM user WHERE email = ? AND password = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String username = rs.getString("username");
+                out.println("<script>alert('Đăng nhập thành công! Chào mừng " + username + "');</script>");
+                out.println("<script>window.location='home.jsp';</script>");
             } else {
-                // Đăng nhập thất bại
-                request.setAttribute("loginMessage", "Thông tin đăng nhập không đúng. Vui lòng thử lại.");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                out.println("<script>alert('Sai email hoặc mật khẩu. Vui lòng thử lại.');</script>");
+                out.println("<script>history.back();</script>");
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            request.setAttribute("loginMessage", "Lỗi kết nối cơ sở dữ liệu. Vui lòng thử lại sau.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+
+            conn.close();
+        } catch (Exception e) {
+            out.println("<script>alert('Đã xảy ra lỗi: " + e.getMessage() + "');</script>");
+            out.println("<script>history.back();</script>");
         }
     }
-}
+} 

@@ -12,7 +12,7 @@
     <header>
         <div class="logo">
             <a href="home.jsp">
-                <img src="https://images.seeklogo.com/logo-png/28/1/premier-league-new-logo-png_seeklogo-286461.png" alt="Sportz">
+                <img src="img/pllogo.png" alt="Sportz">
             </a>
         </div>
         <div class="lo-reg">
@@ -37,7 +37,7 @@
         <ul>
             <li><a href="home.jsp">Home</a></li>
             <li><a href="#">News</a></li>
-            <li><a href="#">Matches</a></li>
+            <li><a href="match.jsp">Matches</a></li>
             <li><a href="team.jsp">Team</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>

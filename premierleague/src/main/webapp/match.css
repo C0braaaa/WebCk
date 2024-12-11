@@ -1,0 +1,148 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: rgb(128, 0, 128);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    position: relative;
+    z-index: 2; /* Đảm bảo header nằm trên carousel */
+}
+
+.logo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 110%; /* Đặt logo ở vị trí giữa theo chiều dọc */
+    left: 10px; /* Đặt logo gần phía trái màn hình */
+    margin-top: -82px; /* Đảm bảo logo căn giữa theo chiều dọc */
+    z-index: 3;
+}
+
+header .lo-reg a {
+    color: white;
+    margin: 0;
+    font-weight: bold;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+header .lo-reg a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    margin: 0;
+    padding: 15px 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    background-color: #fff;
+    padding-top: 0; /* Loại bỏ khoảng cách giữa header và phần chính */
+    padding-bottom: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.matches-section, .ranking-section {
+    width: 48%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.match {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 35%;
+}
+
+.team img {
+    width: 30px;
+    height: 30px;
+}
+
+.info {
+    width: 30%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+table th, table td{
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+table td span {
+    padding: 8px;
+    text-align: center;
+}
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+table img {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    position: relative;
+    width: 100%;
+    padding: 10px 0 10px 0px;
+    text-align: center;
+}
